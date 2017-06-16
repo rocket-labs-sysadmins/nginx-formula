@@ -127,13 +127,13 @@
     },
 }, merge=True) %}
 
-{% if 'user' not in nginx.ng.server.config %}
+{% if 'user' not in nginx.server.config %}
 {% do nginx.server.config.update({
     'user': nginx.lookup.webuser,
 })%}
 {% endif %}
 
-{% if 'pid' not in nginx.ng.server.config and 'pid_file' in nginx.lookup %}
+{% if 'pid' not in nginx.server.config and 'pid_file' in nginx.lookup %}
 {% do nginx.server.config.update({
     'pid': nginx.lookup.pid_file,
 })%}
